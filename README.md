@@ -2,22 +2,22 @@
 
 ## Description
 
-Ticketing System is a Django-based web application for managing tickets, notes, and user profiles.
+A ticketing system is a help desk software program used to process, manage, and track customer issues from submission to resolution. Ticketing systems automatically organize and prioritize support requests in a central dashboard. Users can tag, categorize, and assign tickets as they come in.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- Python 3.x installed
-- Django installed (`pip install django`)
-- Additional Python packages (install using `pip install -r requirements.txt`)
+Python 3.x installed
+Django installed 
+Additional Python packages (install using `pip install -r requirements.txt`)
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/mrsaikumar-7/ticketingSystem.git
+   git clone https://github.com/jahnavi7032/Ticketing-System.git
 2. Navigate to the project directory:
 
    ```bash
@@ -30,7 +30,6 @@ Before you begin, ensure you have met the following requirements:
 
    ```bash
    venv\Scripts\activate   #windows
-   source venv/bin/activate  #macOS/Linux
 5. Install project dependencies:
 
    ```bash
@@ -48,8 +47,8 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    python manage.py runserver
 9. Access the application at http://127.0.0.1:8000/ in your web browser.
-
-
+    
+Hence, the project runs successfully.
 
    
    
