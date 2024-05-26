@@ -8,9 +8,7 @@ A ticketing system is a help desk software program used to process, manage, and 
 
 Before you begin, ensure you have met the following requirements:
 
-Python 3.x installed
-Django installed 
-Additional Python packages (install using `pip install -r requirements.txt`)
+Python 3.x installed, Django installed and Additional Python packages (install using `pip install -r requirements.txt`)
 
 ## Installation
 
