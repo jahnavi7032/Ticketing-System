@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+
+{% if request.user.is_customer %}
+    {% block content %}
+            <div class="profile-container">
+            <div class="profile-card">
+            <img src="https://github.com/mdo.png" alt="hugenerd" width="150" height="150">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                <div>
+                    <p><b>Email: </b></p>
+                    <p>{{ user.email }}</p>
+                </div>
+                {% if user.first_name %}
+                    <div>
+                        <p><b>First Name:</b></p>
+                        <p>{{ user.first_name }}</p>
+                    </div>
+                {% endif %}
+                {% if user.last_name %}
+                    <div>
+                        <p><b>Last Name:</b></p>
+                        <p>{{ user.last_name }}</p>
+                    </div>
+                {% endif %}
+                <div>
+                    <p></p.><b>Role:</b></p>
+                    {% if user.is_customer %}
+                        <p>Customer</p>
+                    {% elif user.is_staff %}
+                        <p>Staff</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        </div>
+    {% endblock %}
+{% else%}
+    {% block content1 %}
+        <div class="profile-container">
+            <div class="profile-card">
+            <img src="https://github.com/mdo.png" alt="hugenerd" width="150" height="150">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                <div>
+                    <p><b>Email: </b></p>
+                    <p>{{ user.email }}</p>
+                </div>
+                {% if user.first_name %}
+                    <div>
+                        <p><b>First Name:</b></p>
+                        <p>{{ user.first_name }}</p>
+                    </div>
+                {% endif %}
+                {% if user.last_name %}
+                    <div>
+                        <p><b>Last Name:</b></p>
+                        <p>{{ user.last_name }}</p>
+                    </div>
+                {% endif %}
+                <div>
+                    <p></p.><b>Role:</b></p>
+                    {% if user.is_customer %}
+                        <p>Customer</p>
+                    {% elif user.is_staff %}
+                        <p>Staff</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        </div>
+    {% endblock %}
+{% endif %}
+

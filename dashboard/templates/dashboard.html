@@ -1,0 +1,156 @@
+<!-- dashboard.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% if request.user.is_staff %}
+
+    {% block content1 %}
+        <div class="cards">
+            <a href="{% url 'all_tickets' %}" class="text-decoration-none">
+                <div class="card">
+                    <div class="box">
+                        <h2 class='text-dark'>Total Tickets</h2>
+                    </div>
+                    <div class="icon-design d-flex">
+                        <img class="me-3 mb-4" src="{% static 'images/open.jpg' %}" alt="">
+                        <h3 class="ms-2 pt-3"> {{totalTickets}} </h3>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'ticket-queue' %}" class="text-decoration-none">
+                <div class="card">
+                    <div class="box">
+                        <h2 class='text-dark'>Active Tickets</h2>
+                    </div>
+                    <div class="icon-design d-flex">
+                        <img class="me-3 mb-4" src="{% static 'images/pending.png' %}" alt="">
+                        <h3 class="ms-2 pt-3"> {{ activeTickets }} </h3>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'pending_tickets_of_engineer' %}" class="text-decoration-none">
+                <div class="card">
+                    <div class="box">
+                        <h2 class='text-dark'>Pending Tickets</h2>
+                    </div>
+                    <div class="icon-design d-flex">
+                        <img class="me-3 mb-4" src="{% static 'images/onhold.png' %}" alt="">
+                        <h3 class="ms-2 pt-3"> {{pendingTickets}} </h3>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'resolved-tickets' %}" class="text-decoration-none">
+                <div class="card">
+                    <div class="box">
+                        <h2 class='text-dark'>Resolved Tickets</h2>
+                    </div>
+                    <div class="icon-design d-flex">
+                        <img class="me-3 mb-4" src="{% static 'images/solved.jpg' %}" alt="">
+                        <h3 class="ms-2 pt-3"> {{resolvedTickets}} </h3>
+                    </div>
+                </div>
+            </a>
+            <div style="width: 50%; margin: auto;">
+                <canvas id="chartjs-pie"></canvas>
+            </div>
+        </div>
+        <script>
+            new Chart(document.getElementById("chartjs-pie"), {
+                type: "pie",
+                data: {
+                    labels: ["Resolved", "Active", "Pending"],
+                    datasets: [{
+                        data: [{{ resolvedTickets }}, {{ activeTickets }}, {{ pendingTickets }}],
+                        backgroundColor: [
+                            'rgb(109 168 65)',
+                            'rgb(206 92 35)',
+                            'rgb(168 65 65)',
+                        ],
+                        borderColor: "transparent"
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    cutoutPercentage: 65,
+                }
+            });
+        </script>
+        
+    {% endblock %}
+{% elif request.user.is_customer %}
+    {% block content %}
+    <div class="cards">
+        <a href="{% url 'all_tickets' %}" class="text-decoration-none">
+            <div class="card">
+                <div class="box">
+                    <h2 class='text-dark'>Total Tickets</h2>
+                </div>
+                <div class="icon-design d-flex">
+                    <img class="me-3 mb-4" src="{% static 'images/open.jpg' %}" alt="">
+                    <h3 class="ms-2 pt-3"> {{totalTickets}} </h3>
+                </div>
+            </div>
+        </a>
+        <a href="{% url 'pending_tickets_of_engineer' %}" class="text-decoration-none">
+            <div class="card">
+                <div class="box">
+                    <h2 class='text-dark'>Active Tickets</h2>
+                </div>
+                <div class="icon-design d-flex">
+                    <img class="me-3 mb-4" src="{% static 'images/pending.png' %}" alt="">
+                    <h3 class="ms-2 pt-3"> {{ activeTickets }} </h3>
+                </div>
+            </div>
+        </a>
+        <a href="{% url 'pending_tickets_of_engineer' %}" class="text-decoration-none">
+            <div class="card">
+                <div class="box">
+                    <h2 class='text-dark'>Pending Tickets</h2>
+                </div>
+                <div class="icon-design d-flex">
+                    <img class="me-3 mb-4" src="{% static 'images/onhold.png' %}" alt="">
+                    <h3 class="ms-2 pt-3"> {{pendingTickets}} </h3>
+                </div>
+            </div>
+        </a>
+        <a href="{% url 'resolved-tickets' %}" class="text-decoration-none">
+            <div class="card">
+                <div class="box">
+                    <h2 class='text-dark'>Resolved Tickets</h2>
+                </div>
+                <div class="icon-design d-flex">
+                    <img class="me-3 mb-4" src="{% static 'images/solved.jpg' %}" alt="">
+                    <h3 class="ms-2 pt-3"> {{resolvedTickets}} </h3>
+                </div>
+            </div>
+        </a>
+        <div style="width: 50%; margin: auto;">
+            <canvas id="chartjs-pie"></canvas>
+        </div>
+    </div>
+    <script>
+        new Chart(document.getElementById("chartjs-pie"), {
+            type: "pie",
+            data: {
+                labels: ["Resolved", "Active", "Pending"],
+                datasets: [{
+                    data: [{{ resolvedTickets }}, {{ activeTickets }}, {{ pendingTickets }}],
+                     backgroundColor: [
+                            'rgb(109 168 65)',
+                            'rgb(206 92 35)',
+                            'rgb(168 65 65)',
+                        ],
+                    borderColor: "transparent"
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutoutPercentage: 65,
+            }
+        });
+    </script>
+    
+    {% endblock %}
+{% endif %}
