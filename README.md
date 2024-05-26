@@ -50,24 +50,7 @@ Before you begin, ensure you have met the following requirements:
 9. Access the application at http://127.0.0.1:8000/ in your web browser.
 
 
-## Usage
-  
-  - Create a new ticket, view, update, and close tickets.
-  - Add notes to tickets.
-  - Access user profile and update information.
-## Project Structure
-  - ticket/: Django app containing the main application logic.
-  - accounts/: Django app handling user authentication and profiles.
-  - static/: Static files (CSS, images, etc.).
-  - templates/: HTML templates.
-    
-## Technologies Used
-  - Django
-  - HTML
-  - CSS
-  - Javascript
-  - Chart.js
-  - bootstrap5
+
    
    
    
