@@ -27,7 +27,7 @@ Python 3.x installed, Django installed and Additional Python packages (install u
 4. Activate the virtual environment:
 
    ```bash
-   venv\Scripts\activate   #windows
+   venv\Scripts\activate   
 5. Install project dependencies:
 
    ```bash
